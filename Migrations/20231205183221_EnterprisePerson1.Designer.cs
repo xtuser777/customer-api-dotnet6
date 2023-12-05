@@ -4,6 +4,7 @@ using CustomerApi.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CustomerApi.Migrations
 {
     [DbContext(typeof(CustomerApiContext))]
-    partial class CustomerApiContextModelSnapshot : ModelSnapshot
+    [Migration("20231205183221_EnterprisePerson1")]
+    partial class EnterprisePerson1
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -150,77 +152,6 @@ namespace CustomerApi.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("IndividualPersons");
-                });
-
-            modelBuilder.Entity("CustomerApi.Models.Person", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
-                    b.Property<int>("AddressId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("ContactId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("EnterprisePersonId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("IndividualPersonId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("Type")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("AddressId");
-
-                    b.HasIndex("ContactId");
-
-                    b.HasIndex("EnterprisePersonId");
-
-                    b.HasIndex("IndividualPersonId");
-
-                    b.ToTable("Persons");
-                });
-
-            modelBuilder.Entity("CustomerApi.Models.Person", b =>
-                {
-                    b.HasOne("CustomerApi.Models.Address", "Address")
-                        .WithMany()
-                        .HasForeignKey("AddressId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("CustomerApi.Models.Contact", "Contact")
-                        .WithMany()
-                        .HasForeignKey("ContactId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("CustomerApi.Models.EnterprisePerson", "EnterprisePerson")
-                        .WithMany()
-                        .HasForeignKey("EnterprisePersonId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("CustomerApi.Models.IndividualPerson", "IndividualPerson")
-                        .WithMany()
-                        .HasForeignKey("IndividualPersonId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Address");
-
-                    b.Navigation("Contact");
-
-                    b.Navigation("EnterprisePerson");
-
-                    b.Navigation("IndividualPerson");
                 });
 #pragma warning restore 612, 618
         }

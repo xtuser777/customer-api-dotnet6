@@ -11,4 +11,10 @@ public class CustomerApiContext : DbContext
     public DbSet<Address> Addresses { get; set; }
 
     public DbSet<Contact> Contacts { get; set; }
+
+    public DbSet<IndividualPerson> IndividualPersons { get; set; }
+
+    public DbSet<EnterprisePerson> EnterprisePersons { get; set; }
+
+    public DbSet<Person> Persons { get; set; }
 }

@@ -16,9 +16,9 @@ public class IndividualPerson
     public string Document { get; set; }
     
     [Required]
-    public DateOnly Birth { get; set; }
+    public DateTime Birth { get; set; }
 
-    public IndividualPerson(int id, string nome, string document, DateOnly birth)
+    public IndividualPerson(int id, string nome, string document, DateTime birth)
     {
         Id = id;
         Nome = nome;
