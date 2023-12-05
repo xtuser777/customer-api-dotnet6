@@ -17,4 +17,6 @@ public class CustomerApiContext : DbContext
     public DbSet<EnterprisePerson> EnterprisePersons { get; set; }
 
     public DbSet<Person> Persons { get; set; }
+
+    public DbSet<Customer> Customers { get; set; }
 }
