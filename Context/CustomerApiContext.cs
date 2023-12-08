@@ -19,4 +19,13 @@ public class CustomerApiContext : DbContext
     public DbSet<Person> Persons { get; set; }
 
     public DbSet<Customer> Customers { get; set; }
+
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    {
+        modelBuilder.Entity<Customer>().Navigation(c => c.Person).AutoInclude();
+        modelBuilder.Entity<Person>().Navigation(p => p.IndividualPerson).AutoInclude();
+        modelBuilder.Entity<Person>().Navigation(p => p.EnterprisePerson).AutoInclude();
+        modelBuilder.Entity<Person>().Navigation(p => p.Address).AutoInclude();
+        modelBuilder.Entity<Person>().Navigation(p => p.Contact).AutoInclude();
+    }
 }

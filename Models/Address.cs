@@ -45,4 +45,8 @@ public class Address
         City = city;
         State = state;
     }
+
+    public Address()
+    {
+    }
 }

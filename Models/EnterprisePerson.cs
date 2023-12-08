@@ -26,4 +26,8 @@ public class EnterprisePerson
         FantasyName = fantasyName;
         Document = document;
     }
+
+    public EnterprisePerson()
+    {
+    }
 }

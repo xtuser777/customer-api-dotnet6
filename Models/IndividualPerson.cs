@@ -9,20 +9,12 @@ public class IndividualPerson
     
     [Required]
     [StringLength(80, MinimumLength = 5)]
-    public string Nome { get; set; }
+    public string? Name { get; set; }
     
     [Required]
     [StringLength(14, MinimumLength = 11)]
-    public string Document { get; set; }
+    public string? Document { get; set; }
     
     [Required]
     public DateTime Birth { get; set; }
-
-    public IndividualPerson(int id, string nome, string document, DateTime birth)
-    {
-        Id = id;
-        Nome = nome;
-        Document = document;
-        Birth = birth;
-    }
 }

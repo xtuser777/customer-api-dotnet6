@@ -27,4 +27,8 @@ public class Contact
         Cellphone = cellphone;
         Email = email;
     }
+
+    public Contact()
+    {
+    }
 }
