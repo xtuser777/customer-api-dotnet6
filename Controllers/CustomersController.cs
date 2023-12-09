@@ -17,12 +17,14 @@ public class CustomersController : ControllerBase
     }
 
     // GET
+    [Produces("application/json")]
     [HttpGet]
     public ActionResult<IEnumerable<CustomerDTO>> Index()
     {
         return _customerService.Find();
     }
 
+    [Produces("application/json")]
     [HttpGet("{id:int}")]
     public ActionResult<CustomerDTO?> Show(int id)
     {
