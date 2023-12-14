@@ -2,11 +2,8 @@ using System.ComponentModel.DataAnnotations;
 
 namespace CustomerApi.Models;
 
-public class EnterprisePerson
-{
-    [Key]
-    public int Id { get; set; }
-    
+public class EnterprisePerson : Person
+{    
     [Required]
     [StringLength(100, MinimumLength = 5)]
     public string? CorporateName { get; set; }

@@ -7,12 +7,10 @@ namespace CustomerApi.Services
 {
     public interface ICustomerService
     {
-        ActionResult<IEnumerable<CustomerDTO>> Find();
-        ActionResult<CustomerDTO?> FindOne(int id);
-        ActionResult Create(CreateCustomerIndividualDTO entity);
-        ActionResult Create(CreateCustomerEnterpriseDTO entity);
-        ActionResult Update(int id, UpdateCustomerIndividualDTO entity);
-        ActionResult Update(int id, UpdateCustomerEnterpriseDTO entity);
-        ActionResult Delete(int id);
+        Task<ActionResult<IEnumerable<CustomerDTO>>> Find();
+        Task<ActionResult<CustomerDTO?>> FindOne(int id);
+        Task<ActionResult> Create(CreateCustomerIndividualDTO entity);
+        Task<ActionResult> Update(int id, UpdateCustomerIndividualDTO entity);
+        Task<ActionResult> Delete(int id);
     }
 }

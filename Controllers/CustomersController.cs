@@ -19,45 +19,33 @@ public class CustomersController : ControllerBase
     // GET
     [Produces("application/json")]
     [HttpGet]
-    public ActionResult<IEnumerable<CustomerDTO>> Index()
+    public async Task<ActionResult<IEnumerable<CustomerDTO>>> Index()
     {
-        return _customerService.Find();
+        return await _customerService.Find();
     }
 
     [Produces("application/json")]
     [HttpGet("{id:int}")]
-    public ActionResult<CustomerDTO?> Show(int id)
+    public async Task<ActionResult<CustomerDTO?>> Show(int id)
     {
-        return _customerService.FindOne(id);
+        return await _customerService.FindOne(id);
     }
 
-    [HttpPost("individual")]
-    public ActionResult<CustomerDTO> Create([FromBody] CreateCustomerIndividualDTO createCustomerDto)
+    [HttpPost()]
+    public async Task<ActionResult<CustomerDTO>> Create([FromBody] CreateCustomerIndividualDTO createCustomerDto)
     {
-        return _customerService.Create(createCustomerDto);
+        return await _customerService.Create(createCustomerDto);
     }
 
-    [HttpPost("enterprise")]
-    public ActionResult<CustomerDTO> Create([FromBody] CreateCustomerEnterpriseDTO createCustomerDto)
+    [HttpPut("{id:int}")]
+    public async Task<ActionResult> Update(int id, [FromBody] UpdateCustomerIndividualDTO updateCustomerDto)
     {
-        return _customerService.Create(createCustomerDto);
-    }
-
-    [HttpPut("individual/{id:int}")]
-    public ActionResult Update(int id, [FromBody] UpdateCustomerIndividualDTO updateCustomerDto)
-    {
-        return _customerService.Update(id, updateCustomerDto);
-    }
-
-    [HttpPut("enterprise/{id:int}")]
-    public ActionResult<CustomerDTO> Update(int id, [FromBody] UpdateCustomerEnterpriseDTO updateCustomerDto)
-    {
-        return _customerService.Update(id, updateCustomerDto);
+        return await  _customerService.Update(id, updateCustomerDto);
     }
 
     [HttpDelete("id:int")]
-    public ActionResult Delete(int id)
+    public async Task<ActionResult> Delete(int id)
     {
-        return _customerService.Delete(id);
+        return await _customerService.Delete(id);
     }
 }
