@@ -73,7 +73,7 @@ namespace CustomerApi.Services
 
             try
             {
-                await _unitOfWork.CustomerRepository.Update(entity);
+                _unitOfWork.CustomerRepository.Update(entity);
                 await _unitOfWork.Commit();
                 return new OkObjectResult(entity);
             }
@@ -91,7 +91,7 @@ namespace CustomerApi.Services
 
             try
             {
-                await _unitOfWork.CustomerRepository.Delete(entity); 
+                _unitOfWork.CustomerRepository.Delete(entity); 
                 await _unitOfWork.Commit();
                 return new NoContentResult();
             } 

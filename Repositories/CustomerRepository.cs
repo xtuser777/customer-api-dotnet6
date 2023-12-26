@@ -14,14 +14,14 @@ public class CustomerRepository : ICustomerRepository
         _context = context;
     }
 
-    public async Task<IQueryable<Customer>> Find()
+    public async Task<IEnumerable<Customer>> Find()
     {
-        return _context.Customers.AsNoTracking();
+        return await _context.Customers.AsNoTracking().ToListAsync();
     }
 
     public async Task<Customer?> FindOne(Expression<Func<Customer?, bool>> predicate)
     {
-        return _context.Customers.AsNoTracking().SingleOrDefault(predicate);
+        return await _context.Customers.AsNoTracking().SingleOrDefaultAsync(predicate);
     }
 
     public async Task<Customer> Create(Customer entity)
@@ -31,12 +31,12 @@ public class CustomerRepository : ICustomerRepository
         return result.Entity;
     }
 
-    public async Task Delete(Customer entity)
+    public void Delete(Customer entity)
     {
         _context.Customers.Remove(entity);
     }
 
-    public async Task Update(Customer entity)
+    public void Update(Customer entity)
     {
         _context.Entry(entity).State = EntityState.Modified;
         _context.Customers.Update(entity);

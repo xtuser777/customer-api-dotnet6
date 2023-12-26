@@ -43,7 +43,7 @@ public class CustomersController : ControllerBase
         return await  _customerService.Update(id, updateCustomerDto);
     }
 
-    [HttpDelete("id:int")]
+    [HttpDelete("{id:int}")]
     public async Task<ActionResult> Delete(int id)
     {
         return await _customerService.Delete(id);
