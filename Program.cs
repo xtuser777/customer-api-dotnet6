@@ -18,6 +18,8 @@ builder.Services.AddDbContext<CustomerApiContext>(options => options.UseSqlServe
 
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 
+builder.Services.AddScoped<IAuthenticate, AuthenticateService>();
+
 builder.Services.AddScoped<ICustomerService, CustomerService>();
 
 builder.Services.AddControllers();
@@ -97,6 +99,7 @@ app.UseHttpsRedirection();
 app.UseCors("CorsPolicy");
 app.UseRouting();
 
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();

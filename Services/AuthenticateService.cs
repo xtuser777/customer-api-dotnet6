@@ -2,7 +2,7 @@
 
 namespace CustomerApi.Services;
 
-public class AuthenticateService
+public class AuthenticateService : IAuthenticate
 {
     private readonly SignInManager<IdentityUser> _signInManager;
     private readonly UserManager<IdentityUser> _userManager;

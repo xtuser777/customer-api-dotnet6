@@ -1,5 +1,7 @@
 using CustomerApi.DTOs.Customer;
 using CustomerApi.Services;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Runtime.InteropServices;
 
@@ -26,6 +28,7 @@ public class CustomersController : ControllerBase
 
     [Produces("application/json")]
     [HttpGet("{id:int}")]
+    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
     public async Task<ActionResult<CustomerDTO?>> Show(int id)
     {
         return await _customerService.FindOne(id);
